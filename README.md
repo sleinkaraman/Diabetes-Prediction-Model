@@ -1,81 +1,73 @@
-## 📊 Diabetes Prediction Model
+# 📊 Diabetes Prediction Model
 
-Bu proje, Pima Indian kadınları üzerine yapılan bir diyabet araştırmasına ait veri setiyle, bireylerin diyabet hastası olup olmadığını tahmin etmeye yönelik bir makine öğrenmesi modeli geliştirmeyi amaçlar. Modeli eğitmeden önce kapsamlı bir veri analizi ve özellik mühendisliği süreci gerçekleştirilmiştir.
+This project aims to develop a machine learning model to predict whether individuals have diabetes using a dataset from a diabetes study conducted on Pima Indian women. Before training the model, a comprehensive data analysis and feature engineering process was carried out.
 
----
+## 📁 About the Dataset
 
-## 📁 Veri Seti Hakkında
+The dataset was collected by the National Institute of Diabetes and Digestive and Kidney Diseases in the United States. It contains information about Pima Indian women aged 21 and older living in Phoenix, Arizona.
 
-Veri seti, ABD’deki Ulusal Diyabet-Sindirim-Böbrek Hastalıkları Enstitüleri tarafından toplanmıştır. Arizona Eyaleti’nin Phoenix şehrinde yaşayan, 21 yaş ve üzerindeki Pima Indian kadınlarına ait bilgiler içermektedir.
+- **Total Number of Observations**: 768  
+- **Independent Variables**: 8  
+- **Target Variable**: `Outcome` (1: Diabetes Positive, 0: Negative)
 
-- **Toplam Gözlem Sayısı**: 768  
-- **Bağımsız Değişkenler**: 8  
-- **Hedef Değişken**: `Outcome` (1: Diyabet Pozitif, 0: Negatif)
+### 🔍 Variables
 
-### 🔍 Değişkenler
-
-| Değişken                  | Açıklama                                                                 |
+| Variable                  | Description                                                              |
 |---------------------------|--------------------------------------------------------------------------|
-| `Pregnancies`             | Hamilelik sayısı                                                        |
-| `Glucose`                 | Glikoz değeri                                                           |
-| `BloodPressure`           | Kan basıncı (Diastolic - Küçük Tansiyon)                                |
-| `SkinThickness`           | Cilt kalınlığı                                                          |
-| `Insulin`                 | İnsülin düzeyi                                                          |
-| `BMI`                     | Beden kitle indeksi                                                     |
-| `DiabetesPedigreeFunction`| Aile geçmişine göre diyabet olasılığı                                    |
-| `Age`                     | Yaş                                                                     |
-| `Outcome`                 | Hedef değişken – Diyabet hastalığı (1: Pozitif, 0: Negatif)             |
-
----
-
-## 🛠 Kullanılan Teknolojiler ve Kütüphaneler
-
-Bu projede kullanılan başlıca teknolojiler ve kütüphaneler şunlardır:
-
-- **Python**: Veri analizi, modelleme ve görselleştirme işlemleri için tercih edilen ana programlama dili.
-
-- **pandas**: Veri setini yüklemek, temizlemek ve dönüştürmek için kullanıldı. Özellikle (`DataFrame`) yapısı sayesinde, verilerin kolayca işlenmesini ve manipüle edilmesini sağladı.
-
-- **numpy**: Matematiksel hesaplamalar, özellikle veri setindeki sayısal özelliklerin işlenmesi ve işlemlerinin hızlandırılması amacıyla kullanıldı. Model için gereken matematiksel işlemleri hızlı ve verimli bir şekilde gerçekleştirdi.
-
-- **matplotlib** ve **seaborn**: Veri görselleştirmeleri oluşturmak için kullanıldı. `matplotlib`, temel grafiklerin çizilmesinde; `seaborn`, daha estetik ve anlaşılır dağılım grafikleri ve ısı haritaları gibi görselleştirmelerin oluşturulmasında tercih edildi.
-
-- **scikit-learn**: Makine öğrenmesi modellemesi için kullanıldı. Modelin eğitilmesi ve değerlendirilmesi süreçlerinde, özellikle:
-  - **RandomForestClassifier**: Diyabet tahmin modelinin oluşturulmasında, karar ağaçlarının bir araya getirilerek güçlü bir sınıflandırma modeli sağlamak için kullanıldı.
-  - **StandardScaler**: Modelin eğitim verisinin özelliklerini standartlaştırarak, farklı ölçeklere sahip verilerin model üzerinde daha sağlıklı bir şekilde öğrenilmesini sağladı.
-  - **LabelEncoder**: Kategorik değişkenlerin sayısal verilere dönüştürülmesi için kullanıldı, böylece model veriyi doğru şekilde işleyebildi.
+| `Pregnancies`             | Number of pregnancies                                                    |
+| `Glucose`                 | Glucose level                                                            |
+| `BloodPressure`           | Blood pressure (Diastolic)                                               |
+| `SkinThickness`           | Skin thickness                                                           |
+| `Insulin`                 | Insulin level                                                            |
+| `BMI`                     | Body mass index                                                          | 
+| `DiabetesPedigreeFunction`| Likelihood of diabetes based on family history                           |
+| `Age`                     | Age                                                                      |
+| `Outcome`                 | Target variable – Diabetes diagnosis (1: Positive, 0: Negative)          |
 
 
+## 🛠 Technologies and Libraries Used
 
----
+The main technologies and libraries used in this project include:
 
-## 📌 Proje Adımları
+- **Python**: The primary programming language used for data analysis, modeling, and visualization.
 
-### 1. Keşifçi Veri Analizi (Exploratory Data Analysis)
+- **pandas**: Used to load, clean, and transform the dataset. Its `DataFrame` structure allows efficient data manipulation and analysis.
 
-- Veri setinin yapısı incelendi.
-- Değişken türleri ayrıştırıldı (sayısal & kategorik).
-- Değişkenlerin dağılımları, aykırı değerler ve eksik veri kontrol edildi.
-- Hedef değişken (`Outcome`) ile ilişkiler incelendi.
+- **numpy**: Used for mathematical computations, particularly for processing numerical features in the dataset. It enables fast and efficient numerical operations required for model training.
 
-### 2. Veri Ön İşleme
+- **matplotlib** ve **seaborn**: Used for data visualization. `matplotlib` was used to create basic plots, while `seaborn` was preferred for more aesthetic and informative visualizations such as distribution plots and heatmaps.
 
-- Ayırıcı nitelikteki eksik değerler belirlendi ve uygun şekilde dönüştürüldü.
-- Aykırı değerlerin etkisi incelendi.
-- Numerik değişkenler için `StandardScaler` ile standartlaştırma yapıldı.
+- **scikit-learn**: Used for machine learning modeling. During the model training and evaluation process, particularly:
+  - **RandomForestClassifier**: DUsed to build the diabetes prediction model by combining multiple decision trees to create a strong classification model.
+  - **StandardScaler**: Used to standardize numerical features so that variables with different scales can be learned more effectively by the model.
+  - **LabelEncoder**: Used to convert categorical variables into numerical values so the model can process them properly.
 
-### 3. Özellik Mühendisliği (Feature Engineering)
 
-- Yeni değişkenler üretildi (örneğin yaş ve BMI grupları).
-- `Pregnancies`, `Age`, `Glucose` gibi değişkenlerin etkileşimleri kontrol edildi.
-- Gerekirse kategorik dönüşümler ve feature encoding işlemleri yapıldı.
+## 📌 Project Steps
 
-### 4. Modelleme ve Değerlendirme
+### 1. KExploratory Data Analysis (EDA)
 
-- `RandomForestClassifier` algoritması kullanıldı.
-- `train_test_split` ile veri ayrılarak model eğitildi.
-- Performans metrikleri: Accuracy, Precision, Recall, F1 Score, ROC-AUC
-- Modelin doğruluğu ve genellenebilirliği test edildi.
+- The structure of the dataset was examined.
+- Variable types were identified (numerical & categorical).
+- Distributions, outliers, and missing values were analyzed.
+- Relationships with the target variable (`Outcome`) were investigated.
+  
+### 2. Data Preprocessing
 
----
+- Distinctive missing values were identified and properly transformed.
+- The impact of outliers was analyzed.
+- Numerical variables were standardized using `StandardScaler`.
+
+### 3. Feature Engineering
+
+- New variables were created (for example, age and BMI groups).
+- Interactions between variables such as `Pregnancies`, `Age` and `Glucose` were examined.
+- Categorical transformations and feature encoding were applied when necessary.
+
+### 4. Modeling and Evaluation
+
+- The `RandomForestClassifier` algorithm was used.
+- The dataset was split using `train_test_split` and the model was trained.
+- Performance metrics: Accuracy, Precision, Recall, F1 Score, ROC-AUC.
+- The model’s accuracy and generalization capability were evaluated.
 
